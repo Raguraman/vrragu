@@ -1,181 +1,64 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const allTags = [...new Set(posts.flatMap(p => p.data.tags))];
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Raguraman Velu Ramachandran | Applied AI Engineer">
-  <section class="bg-gradient-to-br from-primary-50 to-white py-20 sm:py-28">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <p class="text-primary-600 font-medium mb-2">Hi, I'm</p>
-      <h1 class="text-4xl sm:text-5xl font-bold text-surface-900 mb-4">
-        Raguraman Velu Ramachandran
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+    <section class="mb-16">
+      <h1 class="text-3xl sm:text-4xl font-bold text-surface-900 mb-4">
+        Hey, I'm Raguraman
       </h1>
-      <p class="text-xl sm:text-2xl text-surface-600 mb-6">
-        Applied AI Engineer
+      <p class="text-lg text-surface-600 leading-relaxed max-w-2xl mb-4">
+        I'm an Applied AI Engineer building intelligent systems at the intersection of AI/ML and software engineering. I specialize in designing and deploying production-grade AI solutions — from LLM-powered applications and RAG pipelines to scalable ML platforms.
       </p>
-      <p class="text-lg text-surface-500 max-w-2xl leading-relaxed">
-        Building intelligent systems at the intersection of AI/ML and software engineering.
-        Passionate about turning cutting-edge research into production-ready solutions.
+      <p class="text-lg text-surface-600 leading-relaxed max-w-2xl">
+        Currently, I'm focused on generative AI and multi-agent systems. On this blog, I share practical insights on AI engineering, backend architecture, and the hard-won lessons from shipping ML to production.
       </p>
-      <div class="flex gap-4 mt-8">
-        <a href="#contact" class="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium">
-          Get in Touch
+      <div class="flex gap-4 mt-6">
+        <a href="https://www.linkedin.com/in/vrragu/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-surface-500 hover:text-primary-600 transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span class="text-sm font-medium">LinkedIn</span>
         </a>
-        <a href="#experience" class="px-6 py-3 border border-surface-300 text-surface-700 rounded-lg hover:bg-surface-100 transition-colors font-medium">
-          View Experience
-        </a>
+
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="py-16 sm:py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl font-bold text-surface-900 mb-6">About Me</h2>
-      <p class="text-surface-600 leading-relaxed text-lg">
-        I'm an Applied AI Engineer with extensive experience in designing, building, and deploying
-        AI/ML solutions across diverse domains. My expertise spans natural language processing,
-        computer vision, and generative AI, with a strong foundation in backend engineering and
-        cloud infrastructure. I thrive on solving complex problems and delivering scalable,
-        production-grade systems that create real business impact.
-      </p>
-    </div>
-  </section>
-
-  <section id="experience" class="py-16 sm:py-20 bg-surface-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl font-bold text-surface-900 mb-10">Experience</h2>
-      <div class="space-y-10">
-        <div class="relative pl-8 border-l-2 border-primary-200">
-          <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-600"></div>
-          <div class="mb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <h3 class="text-lg font-semibold text-surface-900">Senior Applied AI Engineer</h3>
-            <span class="text-sm text-surface-500">2023 - Present</span>
-          </div>
-          <p class="text-primary-600 font-medium mb-2">AI Solutions Inc.</p>
-          <ul class="text-surface-600 space-y-1">
-            <li>Led development of LLM-powered applications using RAG architecture</li>
-            <li>Designed and deployed multi-agent AI systems for enterprise workflows</li>
-            <li>Reduced inference latency by 40% through model optimization techniques</li>
-          </ul>
+    {allTags.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-sm font-semibold text-surface-400 uppercase tracking-wider mb-4">Topics</h2>
+        <div class="flex flex-wrap gap-2">
+          {allTags.map(tag => (
+            <span class="px-3 py-1 bg-surface-100 text-surface-600 rounded-full text-sm">
+              {tag}
+            </span>
+          ))}
         </div>
+      </section>
+    )}
 
-        <div class="relative pl-8 border-l-2 border-primary-200">
-          <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-600"></div>
-          <div class="mb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <h3 class="text-lg font-semibold text-surface-900">AI/ML Engineer</h3>
-            <span class="text-sm text-surface-500">2021 - 2023</span>
-          </div>
-          <p class="text-primary-600 font-medium mb-2">TechCorp</p>
-          <ul class="text-surface-600 space-y-1">
-            <li>Built end-to-end ML pipelines for NLP and computer vision tasks</li>
-            <li>Implemented real-time inference serving with Kubernetes and TensorRT</li>
-            <li>Developed automated data labeling workflows reducing annotation costs by 60%</li>
-          </ul>
-        </div>
-
-        <div class="relative pl-8 border-l-2 border-primary-200">
-          <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-600"></div>
-          <div class="mb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <h3 class="text-lg font-semibold text-surface-900">Software Engineer - ML Platform</h3>
-            <span class="text-sm text-surface-500">2019 - 2021</span>
-          </div>
-          <p class="text-primary-600 font-medium mb-2">DataFlow Systems</p>
-          <ul class="text-surface-600 space-y-1">
-            <li>Architected ML platform serving 50+ models in production</li>
-            <li>Built feature store and experiment tracking infrastructure</li>
-            <li>Migrated monolithic services to microservices architecture</li>
-          </ul>
-        </div>
-
-        <div class="relative pl-8 border-l-2 border-primary-200">
-          <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-600"></div>
-          <div class="mb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <h3 class="text-lg font-semibold text-surface-900">Backend Developer</h3>
-            <span class="text-sm text-surface-500">2017 - 2019</span>
-          </div>
-          <p class="text-primary-600 font-medium mb-2">StartupXYZ</p>
-          <ul class="text-surface-600 space-y-1">
-            <li>Developed RESTful APIs and backend services using Python and Go</li>
-            <li>Implemented CI/CD pipelines and infrastructure as code with Terraform</li>
-            <li>Optimized database queries resulting in 3x performance improvement</li>
-          </ul>
-        </div>
+    <section>
+      <h2 class="text-sm font-semibold text-surface-400 uppercase tracking-wider mb-6">Latest Posts</h2>
+      <div class="space-y-6">
+        {posts.map((post) => (
+          <a href={`${base}blog/${post.id}/`} class="block group">
+            <article class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+              <time class="text-sm text-surface-400 shrink-0 tabular-nums" datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+              <h3 class="text-lg font-medium text-surface-900 group-hover:text-primary-600 transition-colors">
+                {post.data.title}
+              </h3>
+            </article>
+          </a>
+        ))}
       </div>
-    </div>
-  </section>
-
-  <section class="py-16 sm:py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl font-bold text-surface-900 mb-10">Skills</h2>
-      <div class="grid sm:grid-cols-3 gap-8">
-        <div>
-          <h3 class="text-lg font-semibold text-primary-600 mb-4">Backend</h3>
-          <div class="flex flex-wrap gap-2">
-            {['Python', 'Go', 'FastAPI', 'Django', 'PostgreSQL', 'Redis', 'gRPC'].map(skill => (
-              <span class="px-3 py-1 bg-surface-100 text-surface-700 rounded-full text-sm">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold text-primary-600 mb-4">AI / ML</h3>
-          <div class="flex flex-wrap gap-2">
-            {['PyTorch', 'LangChain', 'Hugging Face', 'OpenAI', 'RAG', 'Fine-tuning', 'MLflow'].map(skill => (
-              <span class="px-3 py-1 bg-surface-100 text-surface-700 rounded-full text-sm">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold text-primary-600 mb-4">Cloud & DevOps</h3>
-          <div class="flex flex-wrap gap-2">
-            {['AWS', 'GCP', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'Linux'].map(skill => (
-              <span class="px-3 py-1 bg-surface-100 text-surface-700 rounded-full text-sm">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-16 sm:py-20 bg-surface-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl font-bold text-surface-900 mb-10">Education & Certifications</h2>
-      <div class="grid sm:grid-cols-2 gap-8">
-        <div>
-          <h3 class="text-lg font-semibold text-surface-900">Master of Science in Computer Science</h3>
-          <p class="text-primary-600 font-medium">University of Technology</p>
-          <p class="text-surface-500 text-sm">Specialization in Machine Learning</p>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold text-surface-900">Certifications</h3>
-          <ul class="text-surface-600 space-y-1 mt-2">
-            <li>AWS Solutions Architect - Associate</li>
-            <li>Google Cloud Professional ML Engineer</li>
-            <li>Deep Learning Specialization (Coursera)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="py-16 sm:py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-2xl font-bold text-surface-900 mb-4">Get in Touch</h2>
-      <p class="text-surface-600 mb-8 max-w-lg mx-auto">
-        I'm always interested in discussing AI projects, collaboration opportunities, or just connecting with fellow engineers.
-      </p>
-      <div class="flex justify-center gap-4 flex-wrap">
-        <a href="mailto:vrragu@example.com" class="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium">
-          Send Email
-        </a>
-        <a href="https://www.linkedin.com/in/vrragu/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 border border-surface-300 text-surface-700 rounded-lg hover:bg-surface-100 transition-colors font-medium">
-          LinkedIn
-        </a>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </BaseLayout>
