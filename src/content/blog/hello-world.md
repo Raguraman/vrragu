@@ -5,7 +5,7 @@ pubDate: 2026-02-14
 tags: ["introduction", "personal"]
 ---
 
-Welcome to my blog! I'm Raguraman, an Applied AI Engineer, and this is where I'll be sharing my thoughts on AI, machine learning, software engineering, and everything in between.
+Welcome to my blog! I'm Raguraman Velu Ramachandran, an Applied AI Engineer, and this is where I'll be sharing my thoughts on AI, machine learning, software engineering, and everything in between.
 
 ## What to Expect
 
