@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+
+  --color-surface-50: #f8fafc;
+  --color-surface-100: #f1f5f9;
+  --color-surface-200: #e2e8f0;
+  --color-surface-300: #cbd5e1;
+  --color-surface-400: #94a3b8;
+  --color-surface-500: #64748b;
+  --color-surface-600: #475569;
+  --color-surface-700: #334155;
+  --color-surface-800: #1e293b;
+  --color-surface-900: #0f172a;
+  --color-surface-950: #020617;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-surface-900;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply max-w-none;
+  }
+  .prose h1 { @apply text-3xl font-bold mb-4 mt-8; }
+  .prose h2 { @apply text-2xl font-bold mb-3 mt-6; }
+  .prose h3 { @apply text-xl font-semibold mb-2 mt-4; }
+  .prose p { @apply mb-4 leading-relaxed; }
+  .prose ul { @apply list-disc pl-6 mb-4; }
+  .prose ol { @apply list-decimal pl-6 mb-4; }
+  .prose li { @apply mb-1; }
+  .prose a { @apply text-primary-600 underline hover:text-primary-800; }
+  .prose code { @apply bg-surface-100 px-1.5 py-0.5 rounded text-sm; }
+  .prose pre { @apply bg-surface-900 text-surface-100 p-4 rounded-lg mb-4 overflow-x-auto; }
+  .prose pre code { @apply bg-transparent p-0; }
+  .prose blockquote { @apply border-l-4 border-primary-300 pl-4 italic my-4; }
+  .prose img { @apply rounded-lg my-4; }
+  .prose hr { @apply my-8 border-surface-200; }
+}
