@@ -1,8 +1,8 @@
 ---
-title: "CNN vs Deep CNN vs ResNet50 vs VGG16 for Age and Gender Detection: A Hands-On Technical Comparison"
+title: "Why Pretrained Models Outperform CNNs in Age and Gender Detection: A Practical Benchmark"
 description: "Practical experiments comparing CNN architectures for facial age and gender prediction, from basic CNN to VGG16 and ResNet50"
-pubDate: 2026-02-15
-author: "Your Name"
+pubDate: 2024-11-15
+author: "Raguraman"
 tags: ["machine-learning", "computer-vision", "deep-learning", "CNN", "VGG16", "ResNet50", "transfer-learning"]
 image:
   url: "/images/vgg16-age-gender.jpg"
@@ -84,12 +84,16 @@ However, training time increased, and such deep networks still lagged behind pre
 
 ## Technical Comparison
 
+```
+
 | Model | Gender Accuracy | Age MAE | Training Stability | Training Time |
 |-------|----------------|---------|-------------------|---------------|
 | CNN | Moderate | High | Moderate | Fast |
 | Deep CNN | Good | Medium | Improved | Moderate |
 | VGG16 | Very Good | Low | Stable | Heavy |
 | ResNet50 | Best | Lowest | Highly stable | Efficient |
+
+```
 
 ### VGG16:
 

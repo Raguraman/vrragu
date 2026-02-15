@@ -1,7 +1,7 @@
 ---
 title: "Hello World - Welcome to My Blog"
 description: "The first post on my personal blog. A brief introduction to what you can expect here."
-pubDate: 2026-02-14
+pubDate: 2024-02-14
 tags: ["introduction", "personal"]
 ---
 
@@ -24,6 +24,6 @@ I believe in learning in public — sharing both successes and failures. Not eve
 
 ## Let's Connect
 
-If anything I write resonates with you, I'd love to hear from you. Feel free to reach out via [LinkedIn](https://www.linkedin.com/in/vrragu/).
+If anything I write resonates with you, I'd love to hear from you. Feel free to reach out via [LinkedIn](https://www.linkedin.com/in/raguraman-ramachandran/).
 
 Stay tuned for more posts!
